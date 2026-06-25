@@ -1,70 +1,105 @@
-# Getting Started with Create React App
+# Pathfinding Visualizer
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+An interactive web application that visualizes how graph search algorithms find the shortest path between two points on a grid.
 
-## Available Scripts
+**Live Demo:** https://pathfinding-visualizer-one-blush.vercel.app
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## What is this?
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Pathfinding algorithms are used everywhere — GPS navigation, game AI, network routing. This project makes them visual and interactive so you can actually *see* how each algorithm thinks.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Features
 
-### `npm test`
+- **5 algorithms** — each with different strategies and tradeoffs
+- **Algorithm comparison mode** — run two algorithms side by side on the same maze and compare results
+- **Custom weighted nodes** — assign movement costs (1–10) to cells; weighted algorithms will find the cheapest path, not just the shortest
+- **Wall drawing** — click and drag to build obstacles
+- **Maze generation** — random scatter maze or recursive division maze
+- **Live stats** — nodes visited, path length, path cost, and algorithm runtime
+- **Animation speed control** — fast, medium, or slow
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## Algorithms
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+| Algorithm | Guarantees Shortest Path | Handles Weights | Strategy |
+|-----------|------------------------|-----------------|----------|
+| Dijkstra's | ✅ Yes | ✅ Yes | Explores all directions by cost |
+| A* Search | ✅ Yes | ✅ Yes | Uses heuristic to aim toward goal |
+| BFS | ✅ Yes (unweighted) | ❌ No | Explores layer by layer |
+| DFS | ❌ No | ❌ No | Dives deep before backtracking |
+| Greedy Best-First | ❌ No | ❌ No | Always moves toward goal |
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Key differences
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- **Dijkstra vs A\***: Both find the shortest path, but A\* uses Manhattan distance as a heuristic to prioritize nodes closer to the goal — making it significantly faster in practice.
+- **BFS vs DFS**: BFS guarantees the shortest path in an unweighted grid. DFS is faster but the path it finds is rarely optimal.
+- **Greedy**: Very fast but can get fooled by obstacles — it charges toward the goal without considering total cost.
 
-### `npm run eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Tech Stack
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- **React** — UI and state management
+- **JavaScript** — algorithm implementations
+- **CSS Animations** — step-by-step visualization
+- **Vercel** — deployment
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+---
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Running Locally
 
-## Learn More
+```bash
+git clone https://github.com/heisenberg-030/pathfinding-visualizer.git
+cd pathfinding-visualizer
+npm install
+npm start
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Open http://localhost:3000 in your browser.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+---
 
-### Code Splitting
+## How to Use
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+1. **Draw walls** — click or drag on the grid
+2. **Add weights** — switch Draw Mode to Weight, adjust the slider, then click cells
+3. **Move start/end** — drag the green or red node anywhere
+4. **Generate a maze** — click Random Maze or Recursive Maze
+5. **Visualize** — pick an algorithm and click Visualize
+6. **Compare** — switch to the Compare tab, pick two algorithms, click Compare
 
-### Analyzing the Bundle Size
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Project Structure
 
-### Making a Progressive Web App
+```
+src/
+├── algorithms/
+│   ├── dijkstra.js
+│   ├── astar.js
+│   ├── bfs.js
+│   ├── dfs.js
+│   └── greedy.js
+├── components/
+│   ├── PathfindingVisualizer.jsx
+│   ├── PathfindingVisualizer.css
+│   ├── ComparisonMode.jsx
+│   ├── ComparisonMode.css
+│   ├── Node.jsx
+│   └── Node.css
+├── App.js
+└── index.js
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+---
 
-### Advanced Configuration
+## What I Learned
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- How graph search algorithms work and their real tradeoffs in speed vs optimality
+- Why A\* is faster than Dijkstra (heuristic guidance reduces unnecessary exploration)
+- React state management for complex interactive UIs
+- CSS animations for step-by-step algorithm visualization
+- Deploying React apps with Vercel and GitHub CI/CD
