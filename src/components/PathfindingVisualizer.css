@@ -1,0 +1,122 @@
+.pv-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  user-select: none;
+}
+
+.pv-header { text-align: center; margin-bottom: 20px; }
+.pv-title { font-size: 28px; font-weight: 600; color: #1D9E75; }
+.pv-subtitle { font-size: 14px; color: #888; margin-top: 4px; }
+
+.pv-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 12px;
+  justify-content: center;
+}
+
+.pv-control { display: flex; flex-direction: column; gap: 4px; }
+.pv-control label { font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: 0.5px; }
+
+select {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid #2a3040;
+  background: #1a1f2e;
+  color: #fff;
+  font-size: 13px;
+  cursor: pointer;
+}
+select:disabled { opacity: 0.4; cursor: not-allowed; }
+
+.pv-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 14px;
+  justify-content: center;
+}
+
+.btn {
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: 1px solid #2a3040;
+  background: #1a1f2e;
+  color: #fff;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.btn:hover { background: #2a3040; }
+.btn:disabled { opacity: 0.4; cursor: not-allowed; }
+.btn-primary { background: #1D9E75; border-color: #1D9E75; font-weight: 600; }
+.btn-primary:hover { background: #178c65; }
+
+.pv-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+.leg { display: flex; align-items: center; gap: 6px; font-size: 12px; color: #aaa; }
+.leg-box { width: 14px; height: 14px; border-radius: 3px; }
+
+.pv-grid-wrap {
+  overflow-x: auto;
+  border: 1px solid #2a3040;
+  border-radius: 8px;
+  background: #0f1117;
+  margin-bottom: 16px;
+}
+
+.pv-grid {
+  display: grid;
+  width: fit-content;
+  margin: 0 auto;
+}
+
+.pv-stats {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.stat-card {
+  background: #1a1f2e;
+  border: 1px solid #2a3040;
+  border-radius: 8px;
+  padding: 10px 20px;
+  text-align: center;
+  min-width: 100px;
+}
+.stat-val { font-size: 22px; font-weight: 600; color: #1D9E75; }
+.stat-lbl { font-size: 11px; color: #888; margin-top: 2px; }
+
+.pv-message {
+  text-align: center;
+  font-size: 13px;
+  color: #888;
+  min-height: 20px;
+}
+
+input[type="range"] {
+  cursor: pointer;
+}
+input[type="range"]:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+.pv-control.weight-inactive label {
+  color: #444;
+}
+
+.weight-hint {
+  font-size: 11px;
+  color: #e55a5a;
+  margin-top: 2px;
+}

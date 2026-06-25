@@ -1,23 +1,28 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import PathfindingVisualizer from './components/PathfindingVisualizer';
+import ComparisonMode from './components/ComparisonMode';
 import './App.css';
 
 function App() {
+  const [tab, setTab] = useState('visualizer');
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <div className="app">
+      <div className="tab-bar">
+        <button
+          className={`tab-btn ${tab === 'visualizer' ? 'tab-active' : ''}`}
+          onClick={() => setTab('visualizer')}
         >
-          Learn React
-        </a>
-      </header>
+          Visualizer
+        </button>
+        <button
+          className={`tab-btn ${tab === 'compare' ? 'tab-active' : ''}`}
+          onClick={() => setTab('compare')}
+        >
+          ⚡ Compare Algorithms
+        </button>
+      </div>
+      {tab === 'visualizer' ? <PathfindingVisualizer /> : <ComparisonMode />}
     </div>
   );
 }

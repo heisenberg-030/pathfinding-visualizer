@@ -1,0 +1,48 @@
+.node {
+  width: 22px;
+  height: 22px;
+  display: inline-block;
+  outline: 1px solid rgba(255, 255, 255, 0.05);
+  background-color: #0f1117;
+}
+
+.node-start {
+  background-color: #1D9E75;
+}
+
+.node-end {
+  background-color: #e55a5a;
+}
+
+.node-wall {
+  background-color: #2a3040;
+  animation: wallAnim 0.15s ease forwards;
+}
+
+.node-weight {
+  background-color: #6b4e9c;
+}
+
+.node-visited {
+  animation: visitAnim 0.5s ease forwards;
+}
+
+.node-path {
+  animation: pathAnim 0.3s ease forwards;
+}
+
+@keyframes wallAnim {
+  0%   { transform: scale(0.6); }
+  100% { transform: scale(1); }
+}
+
+@keyframes visitAnim {
+  0%   { transform: scale(0.3); background-color: #3266ad; border-radius: 50%; }
+  60%  { background-color: #1a5fa8; }
+  100% { transform: scale(1); background-color: #1a3a5c; border-radius: 3px; }
+}
+
+@keyframes pathAnim {
+  0%   { transform: scale(0.5); background-color: #f5c842; }
+  100% { transform: scale(1);   background-color: #f5c842; }
+}
